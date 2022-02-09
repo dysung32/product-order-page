@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&family=Stylish&display=swap" rel="stylesheet">
+
+    <title>나만의 쇼핑몰 주문 페이지</title>
+    <style>
+        * {
+            font-family: 'Noto Serif KR', serif;
+        }
+        .wrap {
+            width: 700px;
+            margin: auto;
+        }
+        .prod_img {
+            width: 700px;
+            margin-bottom: 20px;
+        }
+        .title {
+            font-size: 21px;
+        }
+        .bold {
+            font-weight: bold;
+        }
+        .price {
+            font-size: 15px;
+            font-weight: normal;
+            padding-left: 30px;
+        }
+        .btn {
+            display: block;
+            margin: auto;
+        }
+    </style>
+    <script>
+        function order() {
+            alert('주문이 완료되었습니다 !!');
+        }
+    </script>
+</head>
+
+<body>
+    <div class="wrap">
+        <img class="prod_img" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbtmFqn%2FbtrsHH7McPq%2FNpXcPOEY6KSpcEF0woO9Ok%2Fimg.png">
+        <p class="title bold">CASETiFY X STARBUCKS 콜라보레이션 케이스<span class="price">가격: 55,000원 / 개</span></p>
+        <p>✨CASETiFY X STARBUCKS✨<br>
+        언제 어디서나 스타벅스와 함께 할 수 있는
+        CASETiFY X STARBUCKS 케이스를 소개합니다. 😊<br>
+        CASETiFY X STARBUCKS 케이스와 함께 나만의 취향으로 핸드폰을 꾸며보세요! 💕
+        </p>
+        <p class="title bold">주문하기</p>
+        <!--        주문자 이름-->
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">주문자 이름</span>
+            </div>
+            <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <!--        수량-->
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">수량</label>
+            </div>
+            <select class="custom-select">
+                <option selected>-- 수량을 선택하세요 --</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+            </select>
+        </div>
+        <!--        주소-->
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">주소</span>
+            </div>
+            <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <!--        전화번호-->
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">전화번호</span>
+            </div>
+            <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <!--        주문하기 버튼-->
+        <button type="button" onclick="order()" class="btn btn-primary">주문하기</button>
+    </div>
+</body>
+
+</html>
