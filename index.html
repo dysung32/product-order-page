@@ -52,10 +52,29 @@
             display: block;
             margin: auto;
         }
+        #dollar {
+            color: blue;
+            margin-bottom: 15px;
+        }
     </style>
     <script>
+        $(document).ready(function(){
+            dollar_rate();
+        });
         function order() {
             alert('주문이 완료되었습니다 !!');
+        }
+        function dollar_rate() {
+            $.ajax({
+                type: "GET",
+                url: "http://spartacodingclub.shop/sparta_api/rate",
+                data: {},
+                success: function(response){
+                    let rate = response['rate'];
+                    let temp_html = `<span>${rate}</span>`;
+                    $('#dollar').append(temp_html);
+                }
+            })
         }
     </script>
 </head>
@@ -69,6 +88,10 @@
         CASETiFY X STARBUCKS 케이스를 소개합니다. 😊<br>
         CASETiFY X STARBUCKS 케이스와 함께 나만의 취향으로 핸드폰을 꾸며보세요! 💕
         </p>
+        <!--        실시간 달러 환율 보기-->
+        <div id="dollar">
+            달러·원 환율:
+        </div>
         <p class="title bold">주문하기</p>
         <!--        주문자 이름-->
         <div class="input-group mb-3">
@@ -80,7 +103,7 @@
         <!--        수량-->
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01">수량</label>
+                <label class="input-group-text">수량</label>
             </div>
             <select class="custom-select">
                 <option selected>-- 수량을 선택하세요 --</option>
@@ -108,7 +131,7 @@
             <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
         </div>
         <!--        주문하기 버튼-->
-        <button type="button" onclick="order()" class="btn btn-primary">주문하기</button>
+        <button type="button" onclick="order()" class="btn btn-primary" style="margin-bottom: 10px;">주문하기</button>
     </div>
 </body>
 
