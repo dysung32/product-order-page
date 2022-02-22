@@ -56,14 +56,60 @@
             color: blue;
             margin-bottom: 15px;
         }
+        .orders {
+            margin-top: 70px;
+        }
     </style>
     <script>
         $(document).ready(function(){
             dollar_rate();
+            showOrders();
         });
-        function order() {
-            alert('주문이 완료되었습니다 !!');
+
+        function postOrder() {
+            let name = $('#order-name').val()
+            let amount = $('#order-amount').val()
+            let address = $('#order-address').val()
+            let phonenum = $('#order-phonenum').val()
+
+            $.ajax({
+
+                type: "POST",
+                url: "/shopping",
+                data: {name_give: name, amount_give: amount, address_give: address, phonenum_give: phonenum},
+                success: function (response) { // 성공하면
+                    alert(response["msg"]);
+                    window.location.reload()
+                }
+            })
         }
+
+        function showOrders() {
+            $.ajax({
+                type: "GET",
+                url: "/shopping",
+                data: {},
+                success: function (response) {
+                    let orders = response["all_orders"]
+
+                    for (let i = 0; i < orders.length; i++) {
+                        let name = orders[i]['name']
+                        let amount = orders[i]['amount']
+                        let address = orders[i]['address']
+                        let phonenum = orders[i]['phonenum']
+
+                        let temp_html = `<tr>
+                                            <td>${name}</td>
+                                            <td>${amount}</td>
+                                            <td>${address}</td>
+                                            <td>${phonenum}</td>
+                                        </tr>`
+                        $('#orders-box').append(temp_html)
+                    }
+                }
+            })
+        }
+
         function dollar_rate() {
             $.ajax({
                 type: "GET",
@@ -98,14 +144,14 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">주문자 이름</span>
             </div>
-            <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+            <input type="text" id="order-name" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
         </div>
         <!--        수량-->
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <label class="input-group-text">수량</label>
             </div>
-            <select class="custom-select">
+            <select id="order-amount" class="custom-select">
                 <option selected>-- 수량을 선택하세요 --</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -121,17 +167,33 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">주소</span>
             </div>
-            <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+            <input type="text" id="order-address" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
         </div>
         <!--        전화번호-->
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text">전화번호</span>
             </div>
-            <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+            <input type="text" id="order-phonenum" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
         </div>
         <!--        주문하기 버튼-->
-        <button type="button" onclick="order()" class="btn btn-primary" style="margin-bottom: 10px;">주문하기</button>
+        <button type="button" onclick="postOrder()" class="btn btn-primary" style="margin-bottom: 10px;">주문하기</button>
+
+        <div class="orders">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">이름</th>
+                        <th scope="col">수량</th>
+                        <th scope="col">주소</th>
+                        <th scope="col">전화번호</th>
+                    </tr>
+                </thead>
+                <tbody id="orders-box">
+
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 
