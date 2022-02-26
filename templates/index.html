@@ -25,9 +25,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&family=Stylish&display=swap" rel="stylesheet">
 
     <title>나만의 쇼핑몰 주문 페이지</title>
+
+    <meta property="og:title" content="Yoni's Shopping Mall" />
+    <meta property="og:description" content="CASETiFY X STARBUCKS 콜라보레이션 케이스" />
+    <meta property="og:image" content="{{ url_for('static', filename='ogimage.png') }}" />
+
     <style>
         * {
             font-family: 'Noto Serif KR', serif;
+            margin-left: 10px;
+            margin-right: 20px;
         }
         .wrap {
             width: 700px;
@@ -58,6 +65,25 @@
         }
         .orders {
             margin-top: 70px;
+        }
+        .input-group {
+            display: flex;
+            margin-left: 0px;
+        }
+        .input-group-prepend {
+            flex: 0.3;
+        }
+        .form-control {
+            flex: 0.7;
+            margin-left: 0px;
+        }
+        .custom-select {
+            flex: 0.7;
+            margin-left: 0px;
+        }
+        .input-group-text {
+            width: 80%;
+            margin-right: 10px;
         }
     </style>
     <script>
@@ -131,12 +157,12 @@
         <p class="title bold">CASETiFY X STARBUCKS 콜라보레이션 케이스<span class="price">가격: 55,000원 / 개</span></p>
         <p>✨CASETiFY X STARBUCKS✨<br>
         언제 어디서나 스타벅스와 함께 할 수 있는
-        CASETiFY X STARBUCKS 케이스를 소개합니다. 😊<br>
+        CASETiFY X STARBUCKS 케이스를 소개합니다 😊<br>
         CASETiFY X STARBUCKS 케이스와 함께 나만의 취향으로 핸드폰을 꾸며보세요! 💕
         </p>
         <!--        실시간 달러 환율 보기-->
         <div id="dollar">
-            달러·원 환율:
+            실시간 달러·원 환율:
         </div>
         <p class="title bold">주문하기</p>
         <!--        주문자 이름-->
